@@ -36,3 +36,32 @@ Route::get('/motivasi', function () {
 Route::get('/mimpi', function () {
     return view('amel/mimpi');
 });
+
+Route::get('/tugas', function () {
+    return view('amel/tugas');
+});
+
+Route::get('page/{page?}', function ($hal = 2) {
+    return "Halaman <b>$hal</b>";
+});
+
+Route::get('user/{name?}', function ($nama = "Hello world!") {
+    return "<b>$nama</b>";
+});
+
+Route::get('/pesan/{makanan?}/{minuman?}/{cemilan?}', function ($makanan = null, $minuman = null, $cemilan = null) {
+
+    if ($makanan && $minuman && $cemilan != null) {
+        return "Anda memesan Makanan = $makanan <br>
+                Anda memesan Minuman = $minuman <br>
+                Anda memesan Cemilan = $cemilan";
+    } else if ($makanan && $minuman != null) {
+        return "Anda memesan Makanan = $makanan <br>
+                Anda memesan Minuman = $minuman";
+    } else if ($makanan || $minuman != null) {
+        return $makanan != null ? "Anda memesan makanan : $makanan" : "Anda memesan minuman : $minuman";
+    } else {
+        return "Anda tidak memesan silahkan pulang";
+    }
+
+});
