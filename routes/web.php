@@ -65,3 +65,92 @@ Route::get('/pesan/{makanan?}/{minuman?}/{cemilan?}', function ($makanan = null,
     }
 
 });
+
+Route::get('profile', function () {
+    $nama = "Abdul";
+    return view('profile', compact('nama'));
+});
+
+Route::get('biodata', function () {
+    //Nama, Umur, Alamat,
+    $nama = "Amel";
+    $umur = "17";
+    $alamat = "Jl.Sadang Pesantren";
+    $sekolah = "SMK ASSALAAM Bandung";
+    $kelas = "12 RPL 2";
+    $hobi = "Membaca";
+
+    return view('biodata', compact('nama', 'umur', 'alamat', 'sekolah', 'kelas', 'hobi'));
+
+});
+
+Route::get('blog', function () {
+    $posts = [
+        ['id' => 1, 'title' => 'Lorem Ipsum 1', 'content' => 'Content Pertama'],
+        ['id' => 2, 'title' => 'Lorem Ipsum 2', 'content' => 'Content Kedua'],
+        ['id' => 3, 'title' => 'Lorem Ipsum 3', 'content' => 'Content Ketiga'],
+    ];
+
+    return view('blog', compact('posts'));
+});
+
+Route::get('mapel', function () {
+    $mapel = [
+        ['id' => '1',
+            'name' => 'Amel',
+            'username' => 'Fitria_Amelia',
+            'email' => 'amel@gmail.com',
+            'alamat' => 'sadang pesantren',
+            'mataPelajaran' => [
+                'mapel1' => 'Matematika',
+                'mapel2' => 'Fisika',
+                'mapel3' => 'Kimia',
+            ],
+        ],
+        ['id' => '2',
+            'name' => 'Dian',
+            'username' => 'Dian_baiq',
+            'email' => 'dian@gmail.com',
+            'alamat' => 'sadang pasantren',
+            'mataPelajaran' => [
+                'mapel1' => 'Bahasa Indonesia',
+                'mapel2' => 'Bahasa Inggris',
+                'mapel3' => 'Bahasa Indonesia',
+            ],
+        ],
+        ['id' => '3',
+            'name' => 'Dina',
+            'username' => 'Dina_Amelia',
+            'email' => 'dina@gmail.com',
+            'alamat' => 'bbk nugraha',
+            'mataPelajaran' => [
+                'mapel1' => 'Bahasa Indonesia',
+                'mapel2' => 'Kimia',
+                'mapel3' => 'Matematika',
+            ],
+        ],
+        ['id' => '4',
+            'name' => 'key',
+            'username' => 'kesyza',
+            'email' => 'key@gmail.com',
+            'alamat' => 'rancamanyar',
+            'mataPelajaran' => [
+                'mapel1' => 'Agama',
+                'mapel2' => 'Kimia',
+                'mapel3' => 'Matematika',
+            ],
+        ],
+        ['id' => '5',
+            'name' => 'erin',
+            'username' => 'erinraff',
+            'email' => 'erin@gmail.com',
+            'alamat' => 'raja pancing',
+            'mataPelajaran' => [
+                'mapel1' => 'Agama',
+                'mapel2' => 'Bahasa Indonesia',
+                'mapel3' => 'Kimia',
+            ],
+        ],
+    ];
+    return view('mapel', compact('mapel'));
+});
