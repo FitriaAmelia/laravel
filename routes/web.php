@@ -154,3 +154,23 @@ Route::get('mapel', function () {
     ];
     return view('mapel', compact('mapel'));
 });
+
+Route::get('/testmodel', function () {
+    $post = new App\Models\Post;
+    $post->title = "7 Amalan Pembuka Jodoh";
+    $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
+    $post->save();
+    return $post;
+// check record baru di database
+
+});
+
+Route::get('/test-post', function () {
+    $query = App\Models\Post::all();
+    return view('test-post', compact('query'));
+});
+
+Route::get('/biodatas', function () {
+    $query = App\Models\biodatas::all();
+    return $query;
+});
