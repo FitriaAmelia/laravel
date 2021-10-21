@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -155,22 +157,37 @@ Route::get('mapel', function () {
     return view('mapel', compact('mapel'));
 });
 
-Route::get('/testmodel', function () {
-    $post = new App\Models\Post;
-    $post->title = "7 Amalan Pembuka Jodoh";
-    $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
-    $post->save();
-    return $post;
 // check record baru di database
 
-});
-
 Route::get('/test-post', function () {
-    $query = App\Models\Post::all();
-    return view('test-post', compact('query'));
+    $data = App\Models\Post::all();
+    return view('test-post', compact('data'));
 });
 
 Route::get('/biodatas', function () {
     $query = App\Models\biodatas::all();
     return $query;
 });
+
+Route::get('/test-biodatas', function () {
+    $query = App\Models\biodatas::all();
+    return view('test-biodatas', compact('query'));
+});
+
+Route::get('/postcontrol', [CobasController::class, 'index']);
+
+Route::get('/controlpost', [PostController::class, 'index']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/barangs', [BarangController::class, 'barangs']);
+
+Route::get('/pesanans', [BarangController::class, 'pesanans']);
+
+Route::get('/pembelians', [BarangController::class, 'pembelians']);
+
+Route::get('/pembelis', [BarangController::class, 'pembelis']);
+
+Route::get('/suplier', [BarangController::class, 'suplier']);
